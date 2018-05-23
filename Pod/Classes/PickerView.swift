@@ -271,7 +271,7 @@ open class PickerView: UIView {
             selectionOverlay.alpha = 0.0
             selectionImageView.alpha = 0.0
         case .overlay:
-            selectionOverlay.alpha = 0.25
+            selectionOverlay.alpha = 1.0
             defaultSelectionIndicator.alpha = 0.0
             selectionImageView.alpha = 0.0
         case .image:
