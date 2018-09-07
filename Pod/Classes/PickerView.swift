@@ -629,10 +629,8 @@ extension PickerView: UIScrollViewDelegate {
             targetContentOffset.pointee.y = CGFloat(roundedRow) * rowHeight // Set the targetContentOffset (where the scrolling position will be when the animation ends) to a rounded value.
         }
         
-        // Update the currentSelectedRow and notify the delegate that we have a new selected row.
+        // Update the currentSelectedRow
         currentSelectedRow = roundedRow % numberOfRowsByDataSource
-        
-        delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -641,8 +639,10 @@ extension PickerView: UIScrollViewDelegate {
             selectedNearbyToMiddleRow(currentSelectedRow)
             orientationChanged = false
         }
-        
         isScrolling = false
+        
+        // Notify the delegate that we have a new selected row.
+        delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
